@@ -11,3 +11,4 @@ We can refer to my another configuration: [docker-databases-with-adminer](https:
 - pgAdmin4
 - phpMyAdmin
 - Adminer (optional)
+- redisinsight
