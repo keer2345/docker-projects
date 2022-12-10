@@ -16,7 +16,7 @@ services:
       SPRING_DATASOURCE_PLATFORM: mysql
         # MYSQL_SERVICE_HOST: internet_ip
         # intranet_ip:
-      MYSQL_SERVICE_HOST: 172.19.60.213 
+      MYSQL_SERVICE_HOST: 172.16.0.16 
       MYSQL_SERVICE_PORT: 3308
       MYSQL_SERVICE_USER: nacos
       MYSQL_SERVICE_PASSWORD: nacos
