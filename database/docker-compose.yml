@@ -94,8 +94,8 @@ services:
     ports:
       - 8002:80
 
-  redisinsight:
-    image: redislabs/redisinsight
-    container_name: redisinsight
-    ports:
-      - 8003:8001
+#  redisinsight:
+#    image: redislabs/redisinsight
+#    container_name: redisinsight
+#    ports:
+#      - 8003:8001
