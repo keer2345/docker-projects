@@ -17,7 +17,7 @@ services:
         # MYSQL_SERVICE_HOST: internet_ip
         # intranet_ip:
       MYSQL_SERVICE_HOST: 172.16.0.16 
-      MYSQL_SERVICE_PORT: 3308
+      MYSQL_SERVICE_PORT: 3309
       MYSQL_SERVICE_USER: nacos
       MYSQL_SERVICE_PASSWORD: nacos
       MYSQL_SERVICE_DB_NAME: nacos
@@ -25,5 +25,6 @@ services:
     volumes:
       # log
       - /docker/spring-cloud/nacos/logs/:/home/nacos/logs
-      - ./config/custom.properties:/home/nacos/init.d/custom.properties
+        # - ./config/nacos-logback.xml:/home/nacos/conf/nacos-logback.xml
+        # - ./config/application.properties:/home/nacos/conf/application.properties
     privileged: true

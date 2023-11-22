@@ -47,6 +47,24 @@ services:
       # MARIADB_USER: example
       # MARIADB_PASSWORD: example
 
+  mysqldb:
+    image: mysql:8.0.31
+    command:
+      # 将mysql8.0默认密码策略 修改为 原先 策略 (mysql8.0对其默认策略做了更改 会导致密码无法匹配)
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+    container_name: mysqldb
+    restart: always
+    volumes:
+      - /docker/mysqldb:/var/lib/mysql
+    ports:
+      - 3309:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456hui
+
   # https://www.jianshu.com/p/094078ef4347
   # https://www.php1.cn/detail/ZuiXiangXiDe_doc_26f5dcb1.html
   redis:
