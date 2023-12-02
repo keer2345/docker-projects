@@ -83,7 +83,9 @@ deluser hadoop sudo
 注意，这只会回收用户 "hadoop" 在 sudo 组中的特权，而不会删除用户本身。如果你想完全删除用户 "hadoop"，可以使用 userdel 命令，如前面所述。
 
 ## Debian 12 上安装 Docker
+### Docker
 - https://www.jianshu.com/p/3085326d9502
+- https://computingforgeeks.com/how-to-install-docker-on-debian-12-bookworm/
 
 
 控制命令：
@@ -117,4 +119,16 @@ add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://download.doc
 
 apt update
 apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+sudo usermod -aG docker $USER
+sudo systemctl start docker && sudo systemctl enable docker
+sudo systemctl status docker
+sudo docker version
+sudo docker info
+sudo docker login
+```
+### Docker-compose
+```
+sudo apt install docker-compose -y
+docker-compose --version
 ```
