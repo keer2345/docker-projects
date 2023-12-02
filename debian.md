@@ -81,3 +81,40 @@ userdel -r hadoop
 deluser hadoop sudo
 ```
 注意，这只会回收用户 "hadoop" 在 sudo 组中的特权，而不会删除用户本身。如果你想完全删除用户 "hadoop"，可以使用 userdel 命令，如前面所述。
+
+## Debian 12 上安装 Docker
+- https://www.jianshu.com/p/3085326d9502
+
+
+控制命令：
+- 启动命令： `/etc/init.d/docker start`
+- 运行状态： `/etc/init.d/docker status`
+- 停止命令： `/etc/init.d/docker stop`
+- 重启命令： `/etc/init.d/docker restart`
+
+```sh
+# 1、更新系统
+apt -y update && sudo apt -y upgrade
+
+# 2、添加Docker的官方稳定存储库
+# 为了能够安装 Docker 和所有必需的软件包，我们需要将官方存储库添加到我们的 Debian 12 系统中。我们将从安装所需的软件包开始：
+
+apt install lsb-release gnupg2 apt-transport-https ca-certificates curl software-properties-common -y
+
+
+
+# 导入 Docker 存储库的 GPG 密钥：
+
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/debian.gpg
+
+
+# 现在添加 Docker 稳定存储库：
+
+add-apt-repository "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+
+# 3、Debian 12 安装Docker CE（Bookworm）
+# 添加存储库后，您可以使用以下命令在 Debian 12 (Bookworm) 上继续安装 Docker：
+
+apt update
+apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
