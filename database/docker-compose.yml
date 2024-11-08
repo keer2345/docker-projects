@@ -8,6 +8,19 @@ version: '3.8'
 
 services:
 
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      # data:
+      - /docker/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456hui
 
   mysqldb:
     image: mysql:8.0.31
@@ -49,6 +62,20 @@ services:
     privileged: true
 
     
+  pgadmin4:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin4
+    restart: always
+    ports:
+      - 8001:80
+    environment:
+      - PGADMIN_LISTEN_ADDRESS=0.0.0.0
+      # - PGADMIN_LISTEN_PORT=80
+      - PGADMIN_DEFAULT_EMAIL=test@test.com
+      - PGADMIN_DEFAULT_PASSWORD=123456      
+    # volumes: 
+      # - /docker/pgadmin:/var/lib/pgadmin
+
   phpmyadmin:
     image: phpmyadmin:5.2.0
     container_name: phpmyadmin
