@@ -1,0 +1,29 @@
+services:
+  redis1:
+    image: redis:8
+    container_name: redis1
+    restart: always
+    ports:
+      - 6377:6379
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ./config1:/redis/config
+      - ./data1:/data
+    command: "redis-server /redis/config/redis.conf"
+    privileged: true
+
+
+  redis2:
+    image: redis:8
+    container_name: redis2
+    restart: always
+    ports:
+      - 6378:6379
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ./config2:/redis/config
+      - ./data2:/data
+    command: "redis-server /redis/config/redis.conf"
+    privileged: true

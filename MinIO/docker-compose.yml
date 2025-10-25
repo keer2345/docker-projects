@@ -1,0 +1,26 @@
+version: '3.8'
+
+#####################################
+# Prepare:
+# sudo mkdir /docker
+# sudo chmod 777 /docker
+#####################################
+
+services:
+  minio1:
+    image: minio/minio:latest
+    container_name: lychee-minio
+    environment:
+      # spring boot 服务中的配置项需要与该值一致
+      # nginx 访问页面的登录名和密码。密码不能少于8个字符
+      - MINIO_ACCESS_KEY=lychee
+      - MINIO_SECRET_KEY=lychee123
+    volumes:
+      - /docker/minio/data:/data
+      - /docker/minio/config:/root/.minio
+    ports:
+      # 这个是给Java的minio客户端使用的端口
+      - "19000:9000"
+      # 对主机控制台暴露19001端口，nginx需要将请求导入该端口
+      - "19001:9001"
+    command: server /data --console-address ":9001"
