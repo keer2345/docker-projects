@@ -16,7 +16,7 @@ services:
       - 5432:5432
     volumes:
       # data:
-      - /docker/postgres/data:/var/lib/postgresql/data
+      - /docker/postgres:/var/lib/postgresql
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
